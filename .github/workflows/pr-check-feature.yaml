@@ -34,11 +34,14 @@ jobs:
           terraform_version: 1.0.0
 
       - name: Terraform Init
-        run: terraform init
+        run: |
+          cd terraform/lambda
+          terraform init
 
       - name: Terraform Plan
-        run: terraform plan -parallelism=40
-  
+        run: |
+          cd terraform/lambda
+          terraform plan
 
   createPullRequest:
     runs-on: ubuntu-latest
